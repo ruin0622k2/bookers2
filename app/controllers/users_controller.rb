@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     if @user == current_user
       render "edit"
     else
-      redirect_to user_path(@user.id)
+      redirect_to user_path(current_user.id)
     end
   end
 
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to user_path(@user.id), notice: 'You have updated user successfully.'
     else
-      render :edit
+      render :edit, notice: 'error! Please Try again.'
     end
   end
 

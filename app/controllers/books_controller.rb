@@ -19,7 +19,7 @@ class BooksController < ApplicationController
     if @book.user == current_user
       render "edit"
     else
-      redirect_to book_path(@book.id)
+      redirect_to books_path, notice: 'error! Please Try again.'
     end
   end
 
@@ -30,7 +30,7 @@ class BooksController < ApplicationController
       redirect_to book_path(@book.id), notice: 'book was successfully created.'
     else
       @books = Book.all
-      render :index
+      render :index, notice: 'error! Please Try again.'
     end
   end
 
@@ -49,7 +49,7 @@ class BooksController < ApplicationController
       redirect_to books_path, notice: 'book was successfully deleted!'
     else
       @books = Book.find(params[:id])
-      render :show
+      render :show, notice: 'error! Please Try again.'
     end
   end
 
