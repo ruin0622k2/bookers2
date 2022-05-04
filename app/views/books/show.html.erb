@@ -11,7 +11,7 @@
           <div>
             <tr>
               <td>
-                <%= link_to user_path(@books.id) do %>
+                <%= link_to user_path(@books.user.id) do %>
                 <%= image_tag @books.user.get_profile_image(100,100) %><br>
                 <%= @books.user.name %>
                 <% end %>
@@ -31,7 +31,7 @@
               </td>
               <td>
                 <% if @books.user == current_user %>
-                  <%= link_to book_path(@books.id), method: :delete, class:"btn btn-sm btn-danger" do %>Destroy
+                  <%= link_to book_path(@books.id), method: :delete, data: {confirm: "本当に削除しますか？"} , class:"btn btn-sm btn-danger" do %>Destroy
                   <% end %>
                 <% else %>
                 <% end %>
